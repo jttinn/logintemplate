@@ -1,0 +1,55 @@
+# File Name: .gitignore
+# Version: 1.1
+# Last Updated: 19-Nov-2025
+# Description: Ignore file for the logintemplate project to exclude unnecessary files from version control.
+
+# Python-specific ignores
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.env
+
+# Virtual environment
+venv/
+
+# Flask server logs
+*.log
+
+# MySQL dumps
+*.sql
+*.sql.gz
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Git-specific files
+.git/
+
+# Static assets cache
+staticfiles/
+
+# Temp files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Testing output
+*.pytest_cache/
+test-results/
+
+# Documentation artifacts
+docs/_build/
+
+# Type checking cache
+.mypy_cache/
+
+# Test coverage reports
+.coverage

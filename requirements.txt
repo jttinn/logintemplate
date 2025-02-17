@@ -1,3 +1,8 @@
+# requirements.txt 
+# Version: 1.1
+# Last Updated: 27-Nov-2025
+# Description: This file lists all the dependencies required for the application to run
+
 # Flask is the lightweight web server framework for the application
 Flask==2.3.3
 
@@ -15,3 +20,9 @@ python-dotenv==1.0.0
 
 # Optional: MarkupSafe is a Flask dependency, included explicitly to avoid version conflicts
 MarkupSafe==2.1.3
+
+# Flask-SQLAlchemy for SQLAlchemy support in Flask applications
+Flask-SQLAlchemy==2.5.1
+
+# Flask-Login for user session management
+Flask-Login==0.5.0

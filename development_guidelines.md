@@ -11,14 +11,18 @@ Here is the document:
 ----
 #### Document Name and Version Information
 **Document Title:** Login Template Specifications  
-**Version:** 1.10  
-**Version Date:** 25-Nov-2024
+**Version:** 2.4  
+**Version Date:** 4-Dec-2024
 **Version History:**
 
 | Version | Date        | Change                                                                                                                                        |
 | ------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | 2.0     | 25-Nov-2024 | Combined Section 1 & Section 2 into 1 document, version controlled once. Added .vscode directory to the standard directory structure in 2.6.1 |
 | 2.1     | 25-Nov-2024 | README.md synced with github at the project root. All other documentation will be added under docs/                                           |
+| 2.2     | 26-Nov-2024 | In section 1.3, Rule 8 was changed to add the project directory name when referencing the name of the file and how to update versioning       |
+| 2.3     | 27-Nov-2024 | Updated rule 5 in section 1.3 to provide guidance on how to make changes impacting design of this application. Added 2 new python modules to  |
+|         |             | section 2.3.7, formatted the table in 2.6.1 to be more readable                                                                               |
+| 2.4     | 04-Dec-2024 | Section 2.6.1 Added additional directory structure under static and sorted the table of files and directories for easy lookup                 |
 
 ----
 
@@ -95,7 +99,11 @@ By following the goals, tools, and configurations outlined in this document, the
     The AI must ensure clarity on the goals, tools, and configurations before starting feature discussions or coding. No progress should be made until the user confirms these elements are finalized.
     
 5. **Rule 5: Best-in-Class Recommendations**  
-    The AI may suggest alternative methods, tools, or frameworks that align with the goals and offer advantages. However, changes to specifications or implementations require user approval before proceeding.
+    The AI may suggest alternative methods, tools, or frameworks that align with the goals and offer advantages. However, any proposed changes to specifications or implementations require: 
+    - development work needs to stop 
+    - the AI must provide a review of the changes to documentation and work already performed to the developer
+    - the AI and developer must determine whether the changes are necessary and improve the outcome of our GOALS and come to a concensus. (approval)
+    - implement the changes required
     
 6. **Rule 6: Beginner-Friendly Guidance**  
     The user is a beginner in Python, GitHub, and JavaScript. The AI must provide clear explanations, benefits, and examples to guide feature design and implementation while adhering to best practices.
@@ -109,19 +117,20 @@ By following the goals, tools, and configurations outlined in this document, the
 8. **Rule 8: File Versioning Standards**  
     The AI must include a header in every file containing:
     
-    - File name.
+    - the project directory and File name.  
     - Version number (format: 1.0, 1.1, etc.).
     - Last update date.
     - A brief description.  
         Example:
     
 ```
-# File Name: main.py   
+# File Name: app\main.py   
 # Version: 1.0   
 # Last Updated: 19-Nov-2025  
 # Description: Entry point for the Login Template application.`  
 ```
-
+    - when creating a new file, the AI will assign version 1.0 as the initial version and use the current date for the date displayed next to Last Updated 
+    - when the AI is making a change and presenting a new version of an existing file, the AI will auto-increment the version number and use the current date for the date displayed next to Last Updated 
     
 9. **Rule 9: Partial Code Updates**  
     When providing partial code for an existing file, the AI must include:
@@ -219,13 +228,16 @@ By following the goals, tools, and configurations outlined in this document, the
 
 ##### 2.3.7 Python Modules
 
-- All modules are listed in the requirements.txt file on the project home location
-    - Flask
-	- mysql.connector
-	- sqlalchemy
-	- Werkzeug
-	- python-dotenv
-	- MarkupSafe
+The following Python modules are required for the server-side application development:
+
+- Flask: The lightweight web server framework for the application.
+- mysql-connector-python: MySQL Connector for Python to enable database connectivity.
+- SQLAlchemy: Object Relational Mapping (ORM) to manage database models.
+- Werkzeug: Required for password hashing and general security utilities.
+- python-dotenv: To manage environment variables securely.
+- MarkupSafe: A Flask dependency, included explicitly to avoid version conflicts.
+- Flask-SQLAlchemy: Extension for SQLAlchemy support in Flask applications.
+- Flask-Longin: For user session management
 
 ##### 2.3.8 ORM (Object-Relational Mapping) tool
 
@@ -287,7 +299,10 @@ pip install -r requirements.txt
     	 ├── user_service.py
     	 ├── utils.py
     ├── static/
-    	 └── style.css 
+        ├── css
+      	     └── style.css 
+        ├── images
+        ├── js
     ├── templates/ 
     	├── index.html 
     	├── login.html 
@@ -302,36 +317,59 @@ pip install -r requirements.txt
     
     Where:
     
+--------------------------------------------------------------------------------------------------------------------------------------------
+| NAME               |  TYPE     | DESCRIPTION                                                                                             |
+| ------------------ | --------- | ------------------------------------------------------------------------------------------------------- |
+| .env               | File      | Environmental variables to support the application                                                      |
+| .vscode            | Directory | Contains Visual Studio Code workspace settings and files                                                |
+| api-docs.md        | File      | contains the specifications for any API end-points developed for the application                        |
+| app                | Directory | Contains all the python application files                                                               |
+| auth_routes.py     | File      | Routes for user login, registration, and password recovery                                              |
+| auth_service.py    | File      | Contains user authentication-related logic                                                              |
+| config.py          | File      | Contains the constants and configuration information for the application                                |
+| database.sql       | File      | Contains the SQL code for the initial build of database objects and the initial load of reference data  |
+|                    |           | that is required before the application is run for the first time                                       |
+| email_service.py   | File      | Contains logic for sending emails                                                                       |
+| models             | Directory | Contains Python files defining the database schema and any associated logic using **SQLAlchemy** (the   |
+|                    |           | chosen ORM tool). Each file will represent one or more related database tables as SQLAlchemy classes    |
+|                    |           | (models)                                                                                                |
+| models/__init__.py | File      | Initializes the models module and database connection                                                   |
+| profile_model.py   | File      | Defines the Profile table and related logic. Represents additional user-related data stored in a        |
+|                    |           | separate table (e.g., bio, avatar URL)                                                                  |
+| profile_routes.py  | File      | Routes for user profile management                                                                      |
+| README.md          | File      | the main project document containing information on the application and reference to other relevant     |
+|                    |           | documentation                                                                                           |
+| READMEAI.md        | File      | represents the documentation that has been refined with language that an AI may find easier to consume  |
+|                    |           | in order to understand the specifications of this template and  recreate the code to specification      |
+|                    |           | quickly with few iterations to get a working product                                                    |
+| requirements.txt   | File      | Contains the python library of modules that need to be loaded to support the application                |
+| routes             | Directory | Contains Python files defining Flask routes (e.g., `home`, `login`, `register`).                        |
+| routes/__init__.py | File      | Initializes the routes module                                                                           |
+| services           | Directory | provides a centralized location for business logic and shared utilities, improving the maintainability  |
+|                    |           | and scalability of the application. Used to house **business logic**, **application services**, or      |
+|                    |           | **utility functions** that are not directly tied to specific routes or models. It serves as a middle    |
+|                    |           | layer between the **routes** (API endpoints) and **models** (database schema) in the application's      |
+|                    |           | architecture. This directory helps keep the codebase modular, organized, and scalable.                  |
+| setup-guide.md     | File      | contains the instructions on which development tools to install and specific configurations needed.     |
+|                    |           | Installation steps and troubleshooting for the applications themselves will still need to be referenced |
+|                    |           | from the source locations.                                                                              |
+| static             | Directory | Contains code or text files to support the application either with styling (style.css) or reference     |
+|                    |           | information.                                                                                            |
+| static/css         | Directory | Location to store the css styling sheets                                                                |
+| static/images      | Directory | Location to store images or icons for use on the web pages                                              |
+| static/js          | Directory | Location to store any supporting javascript for the applications                                        |
+| style.css          | File      | Main styling sheet for the application. User should create their own styling sheet when bolting on to   |
+|                    |           | this application.                                                                                       |
+| templates          | Directory | Contains the html files to support the web page applications                                            |
+| tests              | Directory | location for scripts that support testing of the application and its environment                        |
+| troubleshooting.md | File      | provides and FAQ list of issues that might come up and how to resolve them                              |
+| user_model.py      | File      | Defines the User table and associated relationships. - Represents the User table in the database,       |
+|                    |           | including fields like username, email, hashed password, and timestamps.                                 |
+| user_service.py    | File      | For user management operations                                                                          |
+| utils.py           | File      | for shared helper functions                                                                             |
+--------------------------------------------------------------------------------------------------------------------------------------------
 
-| Name               | Type      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| ------------------ | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| app                | Directory | Contains all the python application files                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| config.py          | File      | Contains the constants and configuration information for the application                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| requirements.txt   | File      | Contains the python library of modules that need to be loaded to support the application                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| models             | Directory | Contains Python files defining the database schema and any associated logic using **SQLAlchemy** (the chosen ORM tool). Each file will represent one or more related database tables as SQLAlchemy classes (models)                                                                                                                                                                                                                                                                                      |
-| services           | Directory | provides a centralized location for business logic and shared utilities, improving the maintainability and scalability of the application. Used to house **business logic**, **application services**, or **utility functions** that are not directly tied to specific routes or models. It serves as a middle layer between the **routes** (API endpoints) and **models** (database schema) in the application's architecture. This directory helps keep the codebase modular, organized, and scalable. |
-| static             | Directory | Contains code or text files to support the application either with styling (style.css) or reference information.                                                                                                                                                                                                                                                                                                                                                                                         |
-| templates          | Directory | Contains the html files to support the web page applications                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| database.sql       | File      | Contains the SQL code for the initial build of database objects and the initial load of reference data that is required before the application is run for the first time                                                                                                                                                                                                                                                                                                                                 |
-| .env               | File      | Environmental variables to support the application                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| routes             | Directory | Contains Python files defining Flask routes (e.g., `home`, `login`, `register`).                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| routes/**init**.py | File      | Initializes the routes module                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| auth_routes.py     | File      | Routes for user login, registration, and password recovery                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| profile_routes.py  | File      | Routes for user profile management                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| models/**init**.py | File      | Initializes the models module and database connection                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| user_model.py      | File      | Defines the User table and associated relationships. - Represents the User table in the database, including fields like username, email, hashed password, and timestamps.                                                                                                                                                                                                                                                                                                                                |
-| profile_model.py   | File      | Defines the Profile table and related logic. Represents additional user-related data stored in a separate table (e.g., bio, avatar URL)                                                                                                                                                                                                                                                                                                                                                                  |
-| auth_service.py    | File      | Contains user authentication-related logic                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| email_service.py   | File      | Contains logic for sending emails                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| user_service.py    | File      | For user management operations                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| utils,py           | File      | for shared helper functions                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| README.md          | File      | the main project document containing information on the application and reference to other relevant documentation                                                                                                                                                                                                                                                                                                                                                                                        |
-| READMEAI.md        | File      | represents the documentation that has been refined with language that an AI may find easier to consume in order to understand the specifications of this template and recreate the code to specification quickly with few iterations to get a working product                                                                                                                                                                                                                                            |
-| setup-guide.md     | File      | contains the instructions on which development tools to install and specific configurations needed. Installation steps and troubleshooting for the applications themselves will still need to be referenced from the source locations.                                                                                                                                                                                                                                                                   |
-| api-docs.md        | File      | contains the specifications for any API end-points developed for the application                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| troubleshooting.md | File      | provides and FAQ list of issues that might come up and how to resolve them                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| tests              | Directory | location for scripts that support testing of the application and its environment                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| .vscode            | Directory | Contains Visual Studio Code workspace settings and files                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+
 
 ##### 2.6.2 Password Hashing
 
@@ -680,52 +718,53 @@ The python-dotenv library will load values from a .env file into your applicatio
 
 
 
-This is the end of the DOCUMENTED SPECIFICATIONS.  The next section below represents the current state of the enviroment after we ran the validations to confirm everything was correctly set up. 
 
-This is the CURRENT STATE Development Environment:
 
-The tools and configurations to those tools have been completed. These are the current versions and settings:
-System Prerequisites:
-- Operating System: Windows 11 Home Version 23H2 Build 22631 4460.
-- Browsers: Latest stable versions of Google Chrome and Microsoft Edge.
-Python and Virtual Environment Setup:
-- Python Version: Python 3.12.5.
-- Pip Version: Pip 24.2.
-Virtual Environment: 
-- Active and configured with the necessary libraries. The terminal prompt shows (venv) PS C:\PythonScripts\logintemplate>.
-Environment Configuration Files:
-- .env File: Created and configured with the following content:
-- .gitignore File: Created and configured to exclude unnecessary files from version control:
-Python Modules Installed: 
-- requirements.txt File: Created and executed
-- Installed Packages: Confirmed the following packages are installed:
-blinker 1.9.0
-click 8.1.7
-colorama 0.4.6
-Flask 2.3.3
-greenlet 3.1.1
-itsdangerous 2.2.0
-Jinja2 3.1.4
-MarkupSafe 2.1.3
-mysql-connector-python 8.1.0
-pip 24.2
-protobuf 4.21.12
-python-dotenv 1.0.0
-SQLAlchemy 2.0.23
-typing_extensions 4.12.2
-Werkzeug 2.3.7
-Git Version Control Setup:
-- Git Installation: Verified Git is installed (version 2.47.0.windows.2).
-- Repository Initialization: Initialized the Git repository.
-- Remote Repository: Added the remote repository https://github.com/jttinn/logintemplate.git.
-- Initial Commit: Created and pushed the initial commit to the remote repository.
-- Branch Setup: Renamed the default branch to main and set up tracking with origin/main.
-MySQL Server and MySQL Workbench Setup:
-- MySQL Server: Confirmed the MySQL server is running.
-- MySQL Workbench: Logged into the MySQL server via MySQL Workbench and verified the databases and objects.
 
-The environment validations from Section 2.6.8 were completed except for Validation numbers 6, 9, and 10.  Those validations assume that the application files have already been created. However, for this first run-through of the validations, we will ignore those sections. All future implementations of this environment will use those validations prior to adding additional functionality to the application. 
+SECTION 3: Client Application Web Page Design
+3.1 Web Page Style
+The web pages will utilize the Bootstrap framework for formatting the layout and text styles.
 
-The Project Directories have been set up under logintemplate/ according to section 2.6.1
+3.2 Web Page Components
+There will be three main components displayed on the web page:
 
-This development_guidelines.md file will be used to keep the AI and I in sync as to the current state of this development work.  Each time we begin a new session, the AI will be instructed to read this file and confirm its understanding of the content. A test has been prepared and will be posted in the chat to quiz the AI on the content of the specification and the current state of the enviroment. We cannot continue development work without confirming that the AI and I are in sync on the current state. 
+Sidebar: A menu of the user's application options.
+Banner: The application header and user information.
+Body: The main content area where users perform tasks.
+3.3 Sidebar
+The sidebar will be located on the left side of the page and will display a menu of options for the user to choose from.
+
+Background Color: #88bbbe
+Text Color: #333
+The sidebar will contain the following application options:
+
+Log In: A link to the Login Page (currently blank).
+About: A link to the About Page (currently blank).
+Help: A link to the Help Page (currently blank).
+3.4 Sidebar Action
+At the top of the sidebar, a small tab will provide the user the option to collapse or expand the sidebar. The rules for collapsing or expanding are as follows:
+
+When the sidebar is fully visible, the tab should show "<".
+When the sidebar is collapsed to the left, the tab should show ">".
+Clicking "<" will dynamically collapse the sidebar to the left and replace the tab with ">".
+Clicking ">" will dynamically expand the sidebar to fully show the content and replace the tab with "<".
+3.5 Banner
+The banner will appear across the top of the web page and extend 150px vertically from the top.
+
+Primary Title: An H2 element, centered vertically and 20px from the left, with the text "Login Template". This title will be a link to the Home page.
+Secondary Title: An H4 element, adjacent to the primary title and in italics, with the text "A Login Utility".
+Background Color: #88bbbe
+Text Color: #333
+A round icon with a person's silhouette will be displayed on the banner, vertically centered at the far right. This icon will be linked to a popup menu. Below the icon, the word "Guest" will be displayed.
+
+Clicking the person icon will display a popup menu with the following links:
+
+Login: Links to the Login page.
+Register: Links to the Registration page.
+Settings: Links to the AppSettings page.
+3.6 Body
+The body will contain the application content where users perform tasks.
+
+Background Color: #f3f4f7
+Text Color: #4a536e
+By default, the login page will be displayed within the body section.

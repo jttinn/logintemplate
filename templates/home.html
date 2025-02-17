@@ -1,0 +1,13 @@
+<!-- File Name: logintemplate\templates\home.html -->
+<!-- Version: 1.0 -->
+<!-- Last Updated: 25-Nov-2024 -->
+<!-- Description: Home page template for logged-in users. -->
+
+{% extends 'layout.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ user.username }}!</h2>
+<p>This is your dashboard where you can manage your profile and access other features.</p>
+{% endblock %}

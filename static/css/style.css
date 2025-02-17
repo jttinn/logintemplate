@@ -1,0 +1,75 @@
+/* File Name: logintemplate\static\css\style.css */
+/* Version: 1.8 */
+/* Last Updated: 16-Feb-2025 */
+/* Description: CSS file for styling the web pages. */
+
+.banner {
+    background-color: #88bbbe;
+    padding: 1rem;
+    text-align: center;
+}
+
+.sidepanel  {
+    width: 250px;
+    position: fixed;
+ /*   z-index: 1; */
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: width 0.5s;
+    padding-top: 60px;
+}
+  
+.sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+  
+.sidepanel a:hover {
+    color: #f1f1f1;
+}
+  
+.sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.sidepanel-collapsed {
+    width: 35px;
+}
+  
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+  
+.openbtn:hover {
+    background-color:#444;
+}
+
+.body {
+    background-color: #f3f4f7;
+    color: #4a536e;
+}
+
+.body-content {
+    margin-left: 250px;
+    transition: margin-left 0.3s;
+}
+
+.body-content-collapsed {
+    margin-left: 20px;
+}

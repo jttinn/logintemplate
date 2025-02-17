@@ -1,7 +1,7 @@
-# config.py 
-# Version:          1.0
-# Version Date:     25-Nov-2024
-# 
+# File Name: logintemplate\config.py
+# Version: 1.0
+# Last Updated: 25-Nov-2024
+# Description: Configuration file for the Flask application.
 
 from dotenv import load_dotenv
 import os

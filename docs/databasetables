@@ -1,0 +1,71 @@
+USE `ods`;
+
+DROP TABLE stock_lt;
+
+CREATE TABLE stock_lt (
+    rec_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    lt_key_001    VARCHAR(250),
+	lt_key_002	  VARCHAR(250),
+	lt_key_003    VARCHAR(250),
+	lt_field_004  VARCHAR(250),
+	lt_field_005  VARCHAR(250),
+	lt_field_006  VARCHAR(250),
+	lt_field_007  VARCHAR(250),
+	lt_field_008  VARCHAR(250),
+	lt_field_009  VARCHAR(250),
+	lt_field_010  VARCHAR(250),
+	lt_field_011  VARCHAR(250),
+	lt_field_012  VARCHAR(250),
+	lt_field_013  VARCHAR(250),
+	lt_field_014  VARCHAR(250),
+	lt_field_015  VARCHAR(250),
+	lt_field_016  VARCHAR(250),
+	lt_field_017  VARCHAR(250),
+	lt_field_018  VARCHAR(250),
+	lt_field_019  VARCHAR(250),
+	lt_field_020  VARCHAR(250),
+	lt_field_021  VARCHAR(250),
+	lt_field_022  VARCHAR(250),
+	lt_field_023  VARCHAR(250),
+	lt_field_024  VARCHAR(250),
+	lt_field_025  VARCHAR(250),
+	lt_field_026  VARCHAR(250),
+	lt_field_027  VARCHAR(250),
+	lt_field_028  VARCHAR(250),
+	lt_field_029  VARCHAR(250),
+	lt_field_030  VARCHAR(250),
+	lt_field_031  VARCHAR(250),
+	lt_field_032  VARCHAR(250),
+	lt_field_033  VARCHAR(250),
+	lt_field_034  VARCHAR(250),
+	lt_field_035  VARCHAR(250),
+	lt_field_036  VARCHAR(250),
+	lt_field_037  VARCHAR(250),
+	lt_field_038  VARCHAR(250),
+	lt_field_039  VARCHAR(250),
+	lt_field_040  VARCHAR(250),
+	lt_field_041  VARCHAR(250),
+	lt_field_042  VARCHAR(250),
+	lt_field_043  VARCHAR(250),
+	lt_field_044  VARCHAR(250),
+	lt_field_045  VARCHAR(250),
+	lt_field_046  VARCHAR(250),
+	lt_field_047  VARCHAR(250),
+	lt_field_048  VARCHAR(250),
+	lt_field_049  VARCHAR(250),
+	lt_field_050  VARCHAR(250),
+    stock_lt_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX stock_lt_idx1 
+		  ON stock_lt (
+						lt_key_001
+					  );
+CREATE INDEX stock_lt_idx2 
+		  ON stock_lt (
+                        lt_key_002
+					  );
+CREATE INDEX stock_lt_idx3 
+		  ON stock_lt (
+                        lt_key_003
+					  );

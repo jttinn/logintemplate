@@ -1,11 +1,11 @@
 # File Name: logintemplate\app\__init__.py
-# Version: 1.4
-# Last Updated: 18-Dec-2024
+# Version: 1.8
+# Last Updated: 17-Feb-2025
 # Description: Initialize the Flask application and configure it.
 
 from flask import Flask, render_template, jsonify
 from config import SECRET_KEY, DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DEBUG_MODE
-from flask_sqlalchemy import SQLAlchemy
+from ..db import db
 
 app = Flask(__name__, static_folder='../static', template_folder='../templates')
 
@@ -16,14 +16,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['DEBUG'] = DEBUG_MODE
 
 # Initialize the database
-db = SQLAlchemy(app)
+db.init_app(app)
 
 # Import and register blueprints
 from routes.auth_routes import auth_bp
 from routes.profile_routes import profile_bp
+from routes.upload_csv_routes import upload_csv_bp
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(profile_bp)
+app.register_blueprint(upload_csv_bp)
 
 # Create the database tables
 with app.app_context():

@@ -1,9 +1,10 @@
 # File Name: logintemplate\services\auth_service.py
-# Version: 1.0
-# Last Updated: 25-Nov-2024
+# Version: 1.1
+# Last Updated: 17-Feb-2025
 # Description: Business logic for user authentication.
 
-from models.user_model import User
+from logintemplate.models.user_model import User
+from logintemplate import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
 def register_user(username, email, password):

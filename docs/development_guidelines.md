@@ -70,13 +70,13 @@ Here is the document:
         - Debug mode toggle.
         - Constants such as numeric defaults or strings.  
 
-1. **Security**:  
+3. **Security**:  
     While enhanced security measures are unnecessary for a proof-of-concept, the following exceptions must be implemented:
     
     - Passwords must be hashed and salted (further details will be defined in functional requirements).
     - Sensitive information in `.env` must be secured.
       
-1. **Fallback Behaviors**:  
+4. **Fallback Behaviors**:  
     Any fallback mechanisms necessary for application stability and usability will be defined during the feature specification phase.
     
 
@@ -667,6 +667,104 @@ The python-dotenv library will load values from a .env file into your applicatio
     >     app.run(debug=True)
     > ```
     > 
+    #### **2.6.9 Workspace Configuration**
+
+To ensure that Visual Studio Code recognizes the `logintemplate` package and uses the correct Python interpreter and environment variables, the following workspace-specific settings need to be configured:
+
+1. **Create or Update `.vscode/settings.json`:**
+
+   Add the following content to the `.vscode/settings.json` file to set the Python interpreter path and the `PYTHONPATH` environment variable:
+
+   ```jsonc
+   // File Name: logintemplate\.vscode\settings.json
+   // Version: 1.0
+   // Last Updated: 17-Feb-2025
+   // Description: Workspace-specific settings for the logintemplate project.
+
+   {
+       "python.pythonPath": "C:\\PythonScripts\\logintemplate\\venv\\Scripts\\python.exe",
+       "terminal.integrated.env.windows": {
+           "PYTHONPATH": "C:\\PythonScripts\\logintemplate"
+       }
+   }
+
+   2. Create or Update launch.json:
+
+Add the following content to the launch.json file to configure the launch settings for the Flask application:
+// File Name: logintemplate\.vscode\launch.json
+// Version: 1.0
+// Last Updated: 17-Feb-2025
+// Description: Launch configuration for the logintemplate project.
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Flask",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/app.py",
+            "env": {
+                "FLASK_APP": "app",
+                "FLASK_ENV": "development"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
+
+3. Update logintemplate.code-workspace:
+
+Ensure that the logintemplate.code-workspace file references the workspace settings and configurations correctly:
+
+// File Name: logintemplate\.vscode\logintemplate.code-workspace
+// Version: 1.0
+// Last Updated: 17-Feb-2025
+// Description: Workspace-specific settings for the logintemplate project.
+
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "python.pythonPath": "C:\\PythonScripts\\logintemplate\\venv\\Scripts\\python.exe",
+        "terminal.integrated.env.windows": {
+            "PYTHONPATH": "C:\\PythonScripts\\logintemplate"
+        }
+    },
+    "launch": {
+        "configurations": [
+            {
+                "name": "Python: Flask",
+                "type": "python",
+                "request": "launch",
+                "program": "${workspaceFolder}/app.py",
+                "env": {
+                    "FLASK_APP": "app",
+                    "FLASK_ENV": "development"
+                },
+                "args": [
+                    "run",
+                    "--no-debugger",
+                    "--no-reload"
+                ],
+                "jinja": true,
+                "cwd": "${workspaceFolder}"
+            }
+        ]
+    }
+}
+
+
+
     > #### **7. Configuration Validation**
     > 
     > These steps confirm that environment variables and configurations are loaded correctly.
@@ -701,6 +799,44 @@ The python-dotenv library will load values from a .env file into your applicatio
     >     - Run: `git clone https://github.com/jttinn/logintemplate.git`.
     > - [ ]  Confirm the repository is up to date:
     >     - Run: `git pull origin main`.
+
+
+GitHub Copilot: To create a save point for all code under the `logintemplate` workspace, you can use Git to commit the current state of your project. Here are the steps to do so:
+
+1. **Initialize a Git Repository (if not already initialized):**
+   Open a terminal in the root directory of your project and run:
+   ```sh
+   git init
+   ```
+
+2. **Add All Files to the Repository:**
+   Add all files to the staging area:
+   ```sh
+   git add .
+   ```
+
+3. **Commit the Changes:**
+   Commit the changes with a meaningful message:
+   ```sh
+   git commit -m "Save point: Template for other projects"
+   ```
+
+4. **Create a Tag (Optional):**
+   You can create a tag to mark this specific save point:
+   ```sh
+   git tag -a v1.0 -m "Template for other projects"
+   ```
+
+### Example Commands
+```sh
+cd /c:/PythonScripts/logintemplate
+git init
+git add .
+git commit -m "Save point: Template for other projects"
+git tag -a v1.0 -m "Template for other projects"
+```
+
+This will create a save point in your Git repository that you can use as a template for other projects. You can clone this repository and start development on top of this template for new projects.
     > 
     > #### **9. Application Validation**
     > 

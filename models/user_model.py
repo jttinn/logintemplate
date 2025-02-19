@@ -3,7 +3,7 @@
 # Last Updated: 25-Nov-2024
 # Description: Define the User model.
 
-from app import db
+from logintemplate import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)

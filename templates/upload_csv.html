@@ -1,0 +1,26 @@
+<!-- File Name: logintemplate\templates\upload_csv.html -->
+<!-- Version: 1.0 -->
+<!-- Last Updated: 16-Feb-2025 -->
+<!-- Description: Template for CSV upload page. -->
+
+{% extends "layout.html" %}
+
+{% block title %}CSV Upload{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Upload CSV File</h2>
+    <form action="/upload_csv" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="csvFile">Select CSV file:</label>
+            <input type="file" class="form-control-file" id="csvFile" name="csvFile" accept=".csv" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+    {% if message %}
+    <div class="alert alert-success mt-3">
+        {{ message }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

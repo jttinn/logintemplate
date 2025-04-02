@@ -1,7 +1,7 @@
-**File Name: logintemplate\docs\2-ApplicationArchitecture.md
+**File Name: mrclean\docs\2-ApplicationArchitecture.md
 **Version: 2.6
 **Last Updated: 19-Feb-2025
-**Description: The document describes the Application Architecture to be utilized for the logintemplate application
+**Description: The document describes the Application Architecture to be utilized for the mrclean application
 
 
 | Version | Date        | Change                                                                                                                                        |
@@ -61,20 +61,21 @@
 
 ### 2.3 IDE:
 - Visual Studio Code
-- Visual Studio Code will also be used for access to terminal command line options. For that reason, the integrated terminal (Ctrl+`) must be enabled
+- Visual Studio Code will also be used for access to terminal command line options in Power Shell mode. For that reason, the integrated terminal (Ctrl+`) must be enabled
 
 ### 2.4 Database:
 - MySQL Community Server - GPL, Win64, version 8.0.39 or higher
 - MySQL Workbench, version 8.0.38 build 4270059 CE (win64)
 - The developer must have their own user account and will be granted full admin access to the database in order to create schemas and objects as required
 - The name of the database for this application will be called 'ods' which stands for operational data store.
+- creation of database objects for this project will be done in MySQL Workbench while we are in the design, development and testing phase of this project. 
 
 ### 2.5 Version Control:
 - GitHub
 - The repository will be configured at:
     
     ```
-    jttinn/logintemplate
+    jttinn/mrclean
     ```
     
 - Access to the GitHub repository from Visual Studio Code will be configured to make it easy for code access and version control

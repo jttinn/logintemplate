@@ -1,7 +1,7 @@
-<!-- File Name: logintemplate\templates\layout.html -->
-<!-- Version: 1.8 -->
-<!-- Last Updated: 16-Feb-2024 -->
-<!-- Description: Base template for all other pages in the application. -->
+<!-- File Name: templates/layout.html -->
+<!-- Version: 1.10 -->
+<!-- Last Updated: 01-Apr-2025 -->
+<!-- Description: Base template for MrClean web application with login prompt, logout support, and dynamic breadcrumbs. -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,60 +9,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>{% block title %}My Application{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>MrClean</title>
 </head>
 <body>
-    <div class="banner">
-            <h1><a href="/" class="text-dark">Login Template</a></h1>
-            <h4>A Login Utility</h4>
-    <!-- 
-        <div class="d-flex align-items-center">
-            <span class="mr-2">Guest</span>
-            <img src="{{ url_for('static', filename='images/person_icon.svg') }}" alt="User Icon" class="rounded-circle" style="width: 40px; height: 40px;" data-toggle="dropdown">
-            <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="/login">Login</a>
-                <a class="dropdown-item" href="/register">Register</a>
-                <a class="dropdown-item" href="/settings">Settings</a>
+    <!-- Top Banner: 2 Rows, 12 Columns -->
+    <div class="top-banner">
+        <div class="row banner-main" style="height: 70px;">
+            <div class="col-8 offset-1 d-flex align-items-center">
+                <h1><a href="/" class="text-decoration-none">Mr. Clean: A Data Cleaning and Validation Utility</a></h1>
+            </div>
+            <div class="col-3 d-flex justify-content-end align-items-center pr-4">
+                <div class="dropdown">
+                    <img src="/static/images/person_icon.svg" alt="User Icon" class="rounded-circle" style="width: 30px; height: 30px;" data-toggle="dropdown">
+                    <div class="dropdown-menu dropdown-menu-right">
+                        {% if current_user.is_authenticated %}
+                            <!-- FR# 9.7: Display Logout option when logged in -->
+                            <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a>
+                            <a class="dropdown-item" href="{{ url_for('profile') }}">User Profile</a>
+                            <a class="dropdown-item" href="#">Preferences</a> <!-- Placeholder -->
+                        {% else %}
+                            <a class="dropdown-item" href="{{ url_for('login') }}">Login</a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
-    -->
+        <div class="row breadcrumb-bar" style="height: 32px;">
+            <div class="col-6 d-flex align-items-center">
+                <div class="breadcrumbs">
+                    <a href="/">Home</a>
+                    {% if request.path != '/' %}
+                        <span> > </span>
+                        <span>{{ request.path|replace('/', '')|capitalize }}</span> <!-- Dynamic breadcrumb -->
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="sidepanel">
-            <button id="toggleBtn" onclick="toggleSidepanel()">X</button>
-            <ul>
-              <li class="nav-item">
-                <a class="nav-link active" href="/home">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/profile">Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/upload_csv">CSV Upload</a>
-            </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
-              </li>
-            </ul>
-    </div>          
-    <div class="body-content">
-                {% block content %}
-                <!-- Page-specific content will be injected here -->
-                {% endblock %}
-    </div> 
+    <!-- Left Side Panel -->
+    <div class="left-panel" id="leftPanel">
+        <div class="toggle-btn" id="toggleBtn" onclick="togglePanel()">←</div>
+        <ul class="nav flex-column" id="menuItems">
+            {% for feature in session.get('menu_features', []) %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ feature.feature_link }}">{{ feature.feature_name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- Page Body -->
+    <div class="page-body" id="pageBody">
+        {% block content %}
+        {% endblock %}
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        function toggleSidepanel() {
-          const sidepanel = document.querySelector('.sidepanel');
-          const bodyContent = document.querySelector('.body-content');
-          const toggleBtn = document.getElementById('toggleBtn');
-    
-          sidepanel.classList.toggle('sidepanel-collapsed');
-          bodyContent.classList.toggle('body-content-collapsed');
-    
-          toggleBtn.textContent = sidepanel.classList.contains('sidepanel-collapsed') ? '☰' : 'X';
+        function togglePanel() {
+            const panel = document.getElementById('leftPanel');
+            const body = document.getElementById('pageBody');
+            const btn = document.getElementById('toggleBtn');
+            const menu = document.getElementById('menuItems');
+            
+            if (panel.classList.contains('collapsed')) {
+                panel.classList.remove('collapsed');
+                body.classList.remove('collapsed');
+                btn.textContent = '←';
+                menu.style.display = 'block';
+            } else {
+                panel.classList.add('collapsed');
+                body.classList.add('collapsed');
+                btn.textContent = '→';
+                menu.style.display = 'none';
+            }
         }
     </script>
 </body>

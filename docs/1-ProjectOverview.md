@@ -1,7 +1,7 @@
-// File Name: logintemplate\docs\1-ProjectOverview.md
+// File Name: mrclean\docs\1-ProjectOverview.md
 // Version: 2.6
 // Last Updated: 19-Feb-2025
-// Description: Project overview for the logintemplate project.
+// Description: Project overview for the mrclean project.
 
 
 | Version | Date        | Change                                                                                                                                        |
@@ -151,7 +151,7 @@ It is expected that the AI will contribute significantly to the development of t
 
 ##### **Additional Notes**
 
-- This project is named `logintemplate`. All references to this project should use this name or its acronym, `LT`.  In the convention used within the application development environment, the project name and workspace name will be the same. 
+- This project is named `mrclean`. All references to this project should use this name or its acronym, `LT`.  In the convention used within the application development environment, the project name and workspace name will be the same. 
 - As feature definitions progress, additional documentation and configuration formats (e.g., README file structures) will be addressed in subsequent sections.
 
 

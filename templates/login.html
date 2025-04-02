@@ -1,0 +1,30 @@
+<!-- File Name: templates/login.html -->
+<!-- Version: 1.0 -->
+<!-- Last Updated: 18-Mar-2025 -->
+<!-- Description: Login page for email/password. -->
+
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Login</h2>
+    <form method="POST">
+        <div class="row mb-3">
+            <label for="email" class="col-3 col-form-label">Email:</label>
+            <div class="col-9">
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="password" class="col-3 col-form-label">Password:</label>
+            <div class="col-9">
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 offset-5">
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

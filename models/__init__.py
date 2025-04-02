@@ -1,8 +1,8 @@
-# File Name: logintemplate\models\__init__.py
-# Version: 1.0
-# Last Updated: 25-Nov-2024
-# Description: Initialize the database and import models.
+# File Name: models/__init__.py
+# Version: 1.1
+# Last Updated: 01-Apr-2025
+# Description: Initializes the models package for MrClean, importing all models for easy access.
 
-from app import db
-from models.user_model import User
-from models.profile_model import Profile
+from models.users import mc_users
+from models.roles import mc_roles, mc_user_roles
+from models.features import mc_features, mc_role_features

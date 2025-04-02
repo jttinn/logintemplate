@@ -1,4 +1,4 @@
-Here is the current status of our development exercise for logintemplate project.  The document below is our agreement on: 
+Here is the current status of our development exercise for mrclean project.  The document below is our agreement on: 
 - the goals of the project
 - the rules by which the AI and I will proceed through the design and development work
 - the specifications of the tool set we will use and their configuration
@@ -146,7 +146,7 @@ By following the goals, tools, and configurations outlined in this document, the
 
 ### **Additional Notes**
 
-- The template is named `logintemplate`. All references to this project should use this name or its acronym, `LT`.
+- The template is named `mrclean`. All references to this project should use this name or its acronym, `LT`.
 - As feature definitions progress, additional documentation and configuration formats (e.g., README file structures) will be addressed in subsequent sections.
 
 ## SECTION 2: Application Architecture
@@ -214,7 +214,7 @@ By following the goals, tools, and configurations outlined in this document, the
 - the repository will be configured at:
     
     ```
-    `jttinn/logintemplate`  
+    `jttinn/mrclean`  
     ```
     
 - access to the github repository from visual studio will be configured to make it easy for code access and version control
@@ -271,13 +271,13 @@ pip install -r requirements.txt
     - Location:
     
     ```
-    	C:\PythonScripts\logintemplate
+    	C:\PythonScripts\mrclean
     ```
     
     **Project Folder Structure**
     
     ```
-    logintemplate/
+    mrclean/
     ├── .env
     ├── .vscode
     ├── app/ 
@@ -392,7 +392,7 @@ SECRET_KEY=your_secret_key
 DB_USER=your_db_user
 DB_PASSWORD=your_db_password
 DB_HOST=localhost
-DB_NAME=logintemplate
+DB_NAME=mrclean
 DEBUG_MODE=True
 ```
 
@@ -411,7 +411,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "default_secret_key")  # Fallback to a defa
 DB_USER = os.getenv("DB_USER", "root")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "")
 DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_NAME = os.getenv("DB_NAME", "logintemplate")
+DB_NAME = os.getenv("DB_NAME", "mrclean")
 DEBUG_MODE = os.getenv("DEBUG_MODE", "False").lower() == "true"
 
 ```
@@ -602,7 +602,7 @@ The python-dotenv library will load values from a .env file into your applicatio
     > - [ ]  Start the MySQL server and log in using your credentials:
     >     - Run: `mysql -u [DB_USER] -p`.
     > - [ ]  Create the database for the application:
-    >     - Run: `CREATE DATABASE logintemplate;`.
+    >     - Run: `CREATE DATABASE mrclean;`.
     > - [ ]  Load the `database.sql` schema into the database:
     >     - Use **MySQL Workbench** to execute the SQL script.
     > - [ ]  Verify that all tables and schema objects are created:
@@ -669,32 +669,33 @@ The python-dotenv library will load values from a .env file into your applicatio
     > 
     #### **2.6.9 Workspace Configuration**
 
-To ensure that Visual Studio Code recognizes the `logintemplate` package and uses the correct Python interpreter and environment variables, the following workspace-specific settings need to be configured:
+To ensure that Visual Studio Code recognizes the `mrclean` package and uses the correct Python interpreter and environment variables, the following workspace-specific settings need to be configured:
 
 1. **Create or Update `.vscode/settings.json`:**
 
    Add the following content to the `.vscode/settings.json` file to set the Python interpreter path and the `PYTHONPATH` environment variable:
 
    ```jsonc
-   // File Name: logintemplate\.vscode\settings.json
-   // Version: 1.0
-   // Last Updated: 17-Feb-2025
-   // Description: Workspace-specific settings for the logintemplate project.
+  // File Name: mrclean\.vscode\settings.json
+  // Version: 1.1
+  // Last Updated: 24-Feb-2025
+  // Description: Workspace-specific settings for the mrclean project.
 
-   {
-       "python.pythonPath": "C:\\PythonScripts\\logintemplate\\venv\\Scripts\\python.exe",
-       "terminal.integrated.env.windows": {
-           "PYTHONPATH": "C:\\PythonScripts\\logintemplate"
-       }
-   }
+{
+    "python.pythonPath": "C:\\PythonScripts\\mrclean\\venv\\Scripts\\python.exe",
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "C:\\PythonScripts\\mrclean"
+    },
+    "python.envFile": "${workspaceFolder}/.env"
+}
 
    2. Create or Update launch.json:
 
 Add the following content to the launch.json file to configure the launch settings for the Flask application:
-// File Name: logintemplate\.vscode\launch.json
+// File Name: mrclean\.vscode\launch.json
 // Version: 1.0
 // Last Updated: 17-Feb-2025
-// Description: Launch configuration for the logintemplate project.
+// Description: Launch configuration for the mrclean project.
 
 {
     "version": "0.2.0",
@@ -719,14 +720,14 @@ Add the following content to the launch.json file to configure the launch settin
     ]
 }
 
-3. Update logintemplate.code-workspace:
+3. Update mrclean.code-workspace:
 
-Ensure that the logintemplate.code-workspace file references the workspace settings and configurations correctly:
+Ensure that the mrclean.code-workspace file references the workspace settings and configurations correctly:
 
-// File Name: logintemplate\.vscode\logintemplate.code-workspace
+// File Name: mrclean\.vscode\mrclean.code-workspace
 // Version: 1.0
 // Last Updated: 17-Feb-2025
-// Description: Workspace-specific settings for the logintemplate project.
+// Description: Workspace-specific settings for the mrclean project.
 
 {
     "folders": [
@@ -735,9 +736,9 @@ Ensure that the logintemplate.code-workspace file references the workspace setti
         }
     ],
     "settings": {
-        "python.pythonPath": "C:\\PythonScripts\\logintemplate\\venv\\Scripts\\python.exe",
+        "python.pythonPath": "C:\\PythonScripts\\mrclean\\venv\\Scripts\\python.exe",
         "terminal.integrated.env.windows": {
-            "PYTHONPATH": "C:\\PythonScripts\\logintemplate"
+            "PYTHONPATH": "C:\\PythonScripts\\mrclean"
         }
     },
     "launch": {
@@ -776,7 +777,7 @@ Ensure that the logintemplate.code-workspace file references the workspace setti
     >     DB_USER=your_db_user 
     >     DB_PASSWORD=your_db_password 
     >     DB_HOST=localhost 
-    >     DB_NAME=logintemplate 
+    >     DB_NAME=mrclean 
     >     DEBUG_MODE=True`
     > ```
     > 
@@ -796,12 +797,12 @@ Ensure that the logintemplate.code-workspace file references the workspace setti
     > - [ ]  Check the developer's commit access to the repository
     >     - Run: `git commit --allow-empty -m "Validation test"`
     > - [ ]  Clone the project repository:
-    >     - Run: `git clone https://github.com/jttinn/logintemplate.git`.
+    >     - Run: `git clone https://github.com/jttinn/mrclean.git`.
     > - [ ]  Confirm the repository is up to date:
     >     - Run: `git pull origin main`.
 
 
-GitHub Copilot: To create a save point for all code under the `logintemplate` workspace, you can use Git to commit the current state of your project. Here are the steps to do so:
+GitHub Copilot: To create a save point for all code under the `mrclean` workspace, you can use Git to commit the current state of your project. Here are the steps to do so:
 
 1. **Initialize a Git Repository (if not already initialized):**
    Open a terminal in the root directory of your project and run:
@@ -829,7 +830,7 @@ GitHub Copilot: To create a save point for all code under the `logintemplate` wo
 
 ### Example Commands
 ```sh
-cd /c:/PythonScripts/logintemplate
+cd /c:/PythonScripts/mrclean
 git init
 git add .
 git commit -m "Save point: Template for other projects"
@@ -904,3 +905,688 @@ The body will contain the application content where users perform tasks.
 Background Color: #f3f4f7
 Text Color: #4a536e
 By default, the login page will be displayed within the body section.
+
+## NOTES ON HOW THE APPLICATION WORKS
+
+The order in which these files are processed depends on the flow of the application. Here is the typical order of processing for a Flask application when a user interacts with the "Upload CSV" functionality:
+
+### Order of Processing:
+
+1. User Interation: The user navigates to the "Upload CSV" page by clicking on the corresponding link in the side panel.
+2. Flask Route Handling: The request is routed to the upload_csv route defined in upload_csv_routes.py.
+3. Blueprint Registration: The upload_csv blueprint is registered in the __init__.py file, which initializes the Flask application and configures it.
+4. Rendering the Template: The upload_csv route renders the upload_csv.html template, which extends the layout.html template to ensure a consistent layout with the header and side panel.
+5. Form Submission: When the user submits the form with the CSV file and CSV type, the form data is sent to the upload_csv route via a POST request.
+6. File Handling and Processing: The upload_csv route handles the file upload, saves the file to the uploads folder, and processes the CSV data.
+The route reads the CSV file, creates instances of the StockLT model, and inserts the data into the database.
+
+7. Response Rendering: After processing the CSV file, the route renders the upload_csv.html template again, this time with a success or error message.
+
+Here is the detailed order of processing:
+1. User clicks on "CSV Upload" link: The link in the side panel (defined in layout.html) directs the user to the /upload_csv URL.
+2. Flask routes the request to upload_csv route: The upload_csv route is defined in upload_csv_routes.py and registered in __init__.py.
+3. Rendering the upload_csv.html template: The upload_csv route renders the upload_csv.html template, which extends layout.html.
+4. User submits the form: The form in upload_csv.html is submitted to the /upload_csv URL via a POST request.
+5. Processing the form data: The upload_csv route in upload_csv_routes.py handles the form data, saves the CSV file, processes the data, and inserts it into the database.
+6. Rendering the response: The upload_csv route renders the upload_csv.html template again with a success or error message.
+
+Summary of File Processing Order:
+1. layout.html: Provides the base layout with the side panel and header.
+2. upload_csv.html: Extends layout.html and provides the form for uploading CSV files.
+3. app/__init__.py: Initializes the Flask application and registers the upload_csv blueprint.
+4. upload_csv_routes.py: Defines the upload_csv route that handles the form submission, file upload, and CSV processing.
+By following this order, the application ensures that the user can upload a CSV file, and the data is processed and inserted into the database correctly.
+
+
+## CLEANING AND VALIDATING (From GROK)
+
+To implement the workflow you’ve described for processing CSV content from stock_lt based on configurations in csvconfig, validations, and mappings to production tables, we’ll design a Python solution that integrates with your MySQL database, leverages SQLAlchemy for ORM, and follows best practices for modularity, error handling, and performance. Below is a detailed implementation tailored to your requirements, environment, and workflow.
+Environment Recap
+Windows 11, VS Code 1.97.2, Python 3.12, MySQL 8.0.39
+Models: stock_lt.py, csv_upload.py, csvconfig.py
+Key tables: stock_lt, csvuploads, csvconfig, plus production tables (stock, stock_price)
+Models (Assumed Definitions)
+For clarity, here are the assumed SQLAlchemy models based on your description:
+stock_lt.py
+python
+from sqlalchemy import Column, Integer, Text
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+class StockLT(Base):
+    __tablename__ = 'stock_lt'
+    rec_id = Column(Integer, primary_key=True, autoincrement=True)
+    load_id = Column(Integer)  # Added for linking to csvuploads
+    lt_key_001 = Column(Text, nullable=False)
+    lt_key_002 = Column(Text, nullable=True)
+    lt_key_003 = Column(Text, nullable=True)
+    lt_field_004 = Column(Text, nullable=True)
+    lt_field_005 = Column(Text, nullable=True)
+    lt_field_008 = Column(Text, nullable=True)
+csv_upload.py
+python
+from sqlalchemy import Column, Integer, String, DateTime
+
+class CsvUploads(Base):
+    __tablename__ = 'csvuploads'
+    load_id = Column(Integer, primary_key=True)
+    csv_type = Column(String(50))
+    upload_timestamp = Column(DateTime)
+csvconfig.py
+python
+from sqlalchemy import Column, Integer, String
+
+class CsvConfig(Base):
+    __tablename__ = 'csvconfig'
+    rec_id = Column(Integer, primary_key=True)
+    csv_type = Column(String(50))
+    process_stage = Column(Integer)
+    stage_seq = Column(Integer)
+    lt_field = Column(String(50))
+    lt_validation = Column(String(50))
+    ods_table = Column(String(50))
+    ods_column = Column(String(50))
+Production Tables (e.g., stock.py, stock_price.py)
+python
+class Stock(Base):
+    __tablename__ = 'stock'
+    ticker = Column(String(50), primary_key=True)  # Adjust as needed
+    company_name = Column(String(255))
+    sector = Column(String(100))
+    industry = Column(String(100))
+
+class StockPrice(Base):
+    __tablename__ = 'stock_price'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    ticker = Column(String(50))  # Foreign key to stock if needed
+    quoted_price = Column(String(50))  # Adjust type if numeric
+Implementation
+1. Text Cleaning Function (mr_clean)
+From your earlier question, adapted here:
+python
+import re
+
+def mr_clean(text):
+    if not isinstance(text, str) or not text.strip():
+        return ""
+    cleaned = re.sub(r'[^a-zA-Z0-9.$,\s]', '', text)  # Keep letters, digits, .$,
+    cleaned = re.sub(r'\s+', ' ', cleaned)  # Single spaces only
+    return cleaned.strip()
+2. Validation Functions
+Define validation routines based on lt_validation values:
+python
+def textupper(value):
+    if not value:
+        return value, True
+    return value.upper(), True
+
+def textonly(value):
+    if not value:
+        return value, True
+    return value, bool(re.match(r'^[a-zA-Z\s]+$', value))
+
+def sector(value):
+    if not value:
+        return value, True
+    valid_sectors = {'Technology', 'Finance', 'Healthcare'}  # Example list
+    return value, value in valid_sectors
+
+def industry(value):
+    if not value:
+        return value, True
+    valid_industries = {'Software', 'Banking', 'Pharma'}  # Example list
+    return value, value in valid_industries
+
+def price2(value):
+    if not value:
+        return value, True
+    try:
+        float(value.replace('$', '').replace(',', ''))
+        return value, True
+    except ValueError:
+        return value, False
+
+VALIDATIONS = {
+    'textupper': textupper,
+    'textonly': textonly,
+    'sector': sector,
+    'industry': industry,
+    'price2': price2
+}
+Each function returns (cleaned_value, is_valid).
+3. Error Logging Model
+python
+class ErrorLog(Base):
+    __tablename__ = 'error_log'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    rec_id = Column(Integer)
+    field_name = Column(String(50))
+    error_message = Column(String(255))
+4. Main Processing Script
+Here’s the core implementation of your workflow:
+python
+from sqlalchemy import create_engine, exists
+from sqlalchemy.orm import sessionmaker
+from stock_lt import StockLT
+from csv_upload import CsvUploads
+from csvconfig import CsvConfig
+from stock import Stock
+from stock_price import StockPrice
+from error_log import ErrorLog
+
+# Database setup
+engine = create_engine('mysql+mysqlconnector://user:password@localhost/dbname')
+Session = sessionmaker(bind=engine)
+db = Session()
+
+# Production table mapping
+PROD_TABLES = {
+    'stock': Stock,
+    'stock_price': StockPrice
+}
+
+def process_csv(csv_type='mrclean'):
+    # 1) INITIALIZE SECTION
+    # Retrieve csvconfig records for the given csv_type
+    lt_process = db.query(CsvConfig).filter_by(csv_type=csv_type).order_by(
+        CsvConfig.process_stage, CsvConfig.stage_seq
+    ).all()
+    if not lt_process:
+        print(f"No configuration found for CSV_TYPE '{csv_type}'")
+        return
+
+    # Find matching stock_lt records via csvuploads
+    subquery = exists().where(
+        CsvUploads.load_id == StockLT.load_id,
+        CsvUploads.csv_type == csv_type
+    )
+    stock_lt_records = db.query(StockLT).filter(subquery).all()
+    if not stock_lt_records:
+        print(f"No {csv_type} records to process in stock_lt")
+        return
+
+    # Group lt_process by stage for easier processing
+    stages = {}
+    for config in lt_process:
+        stage = config.process_stage
+        if stage not in stages:
+            stages[stage] = []
+        stages[stage].append(config)
+
+    # 2) STOCK_LT RECORD PROCESSING SECTION
+    for stock_lt in stock_lt_records:
+        error_flag = False
+        stage_data = {}  # To store processed data per stage
+
+        # 2.1) STAGE PROCESSING SECTION
+        current_stage = 1
+        while current_stage in stages:
+            stage_configs = stages[current_stage]
+            max_seq = max(cfg.stage_seq for cfg in stage_configs)
+
+            current_seq = 1
+            while current_seq <= max_seq:
+                # Find config for current stage and seq
+                config = next((c for c in stage_configs if c.stage_seq == current_seq), None)
+                if not config:
+                    current_seq += 1
+                    continue
+
+                # Get field value from stock_lt
+                field_value = getattr(stock_lt, config.lt_field, None)
+                if field_value is None:
+                    current_seq += 1
+                    continue
+
+                # Clean the field
+                cleaned_value = mr_clean(field_value)
+                if not cleaned_value:
+                    current_seq += 1
+                    continue
+
+                # Validate the field
+                validation_func = VALIDATIONS.get(config.lt_validation)
+                if not validation_func:
+                    error_msg = f"Unknown validation '{config.lt_validation}'"
+                    db.add(ErrorLog(rec_id=stock_lt.rec_id, field_name=config.lt_field, error_message=error_msg))
+                    error_flag = True
+                    current_seq += 1
+                    continue
+
+                validated_value, is_valid = validation_func(cleaned_value)
+                if not is_valid:
+                    error_msg = f"Validation '{config.lt_validation}' failed for value '{cleaned_value}'"
+                    db.add(ErrorLog(rec_id=stock_lt.rec_id, field_name=config.lt_field, error_message=error_msg))
+                    error_flag = True
+                    current_seq += 1
+                    continue
+
+                # Store validated value for the stage
+                if current_stage not in stage_data:
+                    stage_data[current_stage] = {}
+                stage_data[current_stage][config.ods_column] = validated_value
+                current_seq += 1
+
+            current_stage += 1
+
+        # 2.2) WRITE TO PRODUCTION TABLE SECTION
+        if not error_flag:
+            for stage, data in stage_data.items():
+                ods_table = stages[stage][0].ods_table  # All configs in a stage share the same table
+                prod_model = PROD_TABLES.get(ods_table)
+                if not prod_model:
+                    print(f"Unknown production table '{ods_table}'")
+                    continue
+
+                # Create or update record (example assumes ticker as key for stock)
+                if ods_table == 'stock':
+                    stock = db.query(Stock).filter_by(ticker=data.get('ticker')).first()
+                    if not stock:
+                        stock = Stock(**data)
+                        db.add(stock)
+                    else:
+                        for key, value in data.items():
+                            setattr(stock, key, value)
+                elif ods_table == 'stock_price':
+                    price = StockPrice(ticker=data.get('ticker', stock_lt.lt_key_001), quoted_price=data['quoted_price'])
+                    db.add(price)
+
+        db.commit()  # Commit per record to save errors and production data
+
+    print(f"Processing completed for CSV_TYPE '{csv_type}'")
+
+# Example usage from web page "EXECUTE" button
+if __name__ == "__main__":
+    process_csv('mrclean')
+    db.close()
+How It Works
+Initialize:
+Fetches csvconfig records into lt_process and groups them by process_stage.
+Queries stock_lt using an EXISTS clause to match load_id with csvuploads.
+StockLT Processing:
+Iterates over each stock_lt record.
+Tracks errors with error_flag.
+Stage Processing:
+Processes each stage and sequence within lt_process.
+Cleans fields with mr_clean.
+Validates using the specified lt_validation function.
+Logs errors to error_log if validation fails.
+Stores validated data in stage_data.
+Write to Production:
+If no errors, writes data to the appropriate production table (stock or stock_price).
+Handles upsert logic (create if not exists, update if exists) for stock.
+Best Practices Applied
+Modularity: Separate cleaning (mr_clean) and validation (VALIDATIONS) functions.
+Error Handling: Logs errors to error_log table with detailed messages.
+ORM Usage: Leverages SQLAlchemy for database operations, ensuring mutability and session management.
+Scalability: Processes records one at a time with commits to avoid memory issues with large datasets.
+Adjustments Needed
+Database Connection: Replace 'mysql+mysqlconnector://user:password@localhost/dbname' with your actual MySQL credentials.
+Production Table Logic: Customize upsert logic in WRITE TO PRODUCTION TABLE SECTION based on your key constraints (e.g., ticker for stock).
+Validation Rules: Expand VALIDATIONS with actual business logic for sector, industry, etc.
+Let me know if you need refinements or help integrating this with your web framework (e.g., Flask)!
+
+
+## MORE GROK ASSISTANCE WITH Processing CSV 
+
+Thank you for providing the detailed requirements and codebase for your "mrclean" project! I’ve reviewed the files and requirements, and I’ll now guide you on expanding your current code to fully meet the CSV processing requirements outlined in your workflow. I’ll focus on integrating the logic into routes/process_csv_routes.py and csv_processors/mrclean_processor.py, while ensuring compatibility with your database models and templates.
+Current Code Review Summary
+Your existing code provides a solid foundation:
+Templates: process_csv.html and upload_csv.html handle user input cleanly.
+
+Models: StockLT, CSVUploads, and CSVConfig align with your database schema and requirements.
+
+Routes: upload_csv_routes.py successfully uploads CSVs to stock_lt, and process_csv_routes.py initiates processing with a dynamic processor import.
+
+CSV Processors: mrclean_processor.py has basic processing logic but needs expansion to match the detailed workflow.
+
+The main gap is in the CSV processing workflow (Section B of your requirements). The current mrclean_processor.py performs simple transformations (e.g., uppercase lt_field_004), but it doesn’t yet implement the multi-stage processing, cleaning, validation, and error logging described.
+Expansion Plan
+Here’s how we’ll expand the code:
+Update mrclean_processor.py:
+Implement the full workflow (Initialize, Stock_LT Record Processing, Stage Processing, Write to Production).
+
+Add cleaning (MRCLEAN) and validation routines (e.g., textupper, price2).
+
+Introduce an error logging table and logic.
+
+Enhance process_csv_routes.py:
+Pass the selected csv_type and orchestrate the processor call.
+
+Add Supporting Models:
+Create an ErrorLog model for tracking validation errors.
+
+Adjust Template (if needed):
+Ensure process_csv.html can display detailed feedback.
+
+Let’s implement these step-by-step.
+Step 1: Update mrclean_processor.py
+This file will handle the core processing logic per your workflow. We’ll:
+Fetch CSVConfig mappings for the csv_type.
+
+Process StockLT records stage-by-stage.
+
+Clean and validate fields using MRCLEAN and specific validation routines.
+
+Log errors and write valid data to production tables (stock and stock_price).
+
+Here’s the expanded version:
+python
+
+# File Name: mrclean\csv_processors\mrclean_processor.py
+# Version: 1.5
+# Last Updated: 27-Feb-2025
+# Description: Processing script for mrclean CSV type implementing multi-stage workflow.
+
+from .utils import db, StockLT, SQLAlchemyError, CSVUploads, CSVConfig
+from sqlalchemy import func
+from app import db  # Ensure db is accessible
+
+# Define validation routines
+def textupper(value):
+    return value.isupper() if value else True
+
+def textonly(value):
+    return value.isalpha() if value else True
+
+def sector(value):
+    # Example: Assume valid sectors are predefined
+    valid_sectors = {'TECH', 'FINANCE', 'HEALTHCARE'}
+    return value in valid_sectors if value else True
+
+def industry(value):
+    # Example: Assume valid industries are predefined
+    valid_industries = {'SOFTWARE', 'BANKING', 'PHARMA'}
+    return value in valid_industries if value else True
+
+def price2(value):
+    try:
+        return float(value) >= 0 if value else True
+    except ValueError:
+        return False
+
+VALIDATION_ROUTINES = {
+    'textupper': textupper,
+    'textonly': textonly,
+    'sector': sector,
+    'industry': industry,
+    'price2': price2
+}
+
+# Cleaning function (MRCLEAN)
+def mrclean(value):
+    if not value:
+        return None
+    # Allowed: digits, letters, .$, single spaces
+    allowed_chars = set('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.$, ')
+    cleaned = ''.join(c for c in value if c in allowed_chars)
+    # Remove multiple spaces, no leading/trailing spaces
+    cleaned = ' '.join(cleaned.split())
+    return cleaned.strip() if cleaned else None
+
+# ErrorLog model (define here temporarily; should move to models/)
+class ErrorLog(db.Model):
+    __tablename__ = 'error_log'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    stock_lt_rec_id = db.Column(db.Integer, db.ForeignKey('stock_lt.rec_id'), nullable=False)
+    field_name = db.Column(db.String(15), nullable=False)
+    error_message = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=func.now(), nullable=False)
+
+def process_mrclean(csv_type):
+    try:
+        # 1) INITIALIZE SECTION
+        # Retrieve CSVConfig mappings for csv_type
+        ltprocess = db.session.query(CSVConfig).filter_by(csv_type=csv_type).order_by(
+            CSVConfig.process_stage, CSVConfig.stage_seq
+        ).all()
+        if not ltprocess:
+            return f"No configuration found for CSV Type: {csv_type}"
+
+        # Find matching StockLT records via CSVUploads
+        records = db.session.query(StockLT).join(StockLT.csv_upload).filter(
+            CSVUploads.csv_type == csv_type
+        ).all()
+        if not records:
+            return f"No {csv_type} records to process"
+
+        processed_count = 0
+        error_count = 0
+
+        # 2) STOCK_LT RECORD PROCESSING SECTION
+        for record in records:
+            error_flag = False
+            stage_data = {}  # Store processed data by stage and table
+
+            # Group ltprocess by stage
+            max_stage = max(cfg.process_stage for cfg in ltprocess)
+            current_stage = 1
+
+            # 2.1) STAGE PROCESSING SECTION
+            while current_stage <= max_stage:
+                stage_configs = [cfg for cfg in ltprocess if cfg.process_stage == current_stage]
+                if not stage_configs:
+                    current_stage += 1
+                    continue
+
+                current_seq = 1
+                max_seq = max(cfg.stage_seq for cfg in stage_configs)
+
+                while current_seq <= max_seq:
+                    cfg = next((c for c in stage_configs if c.stage_seq == current_seq), None)
+                    if not cfg:
+                        current_seq += 1
+                        continue
+
+                    # Get field value from StockLT
+                    field_value = getattr(record, cfg.lt_field, None)
+                    if field_value is None:
+                        current_seq += 1
+                        continue
+
+                    # Clean the field
+                    cleaned_value = mrclean(field_value)
+                    if cleaned_value is None:
+                        current_seq += 1
+                        continue
+
+                    # Validate the field
+                    validation_func = VALIDATION_ROUTINES.get(cfg.lt_validation)
+                    if not validation_func or not validation_func(cleaned_value):
+                        error_log = ErrorLog(
+                            stock_lt_rec_id=record.rec_id,
+                            field_name=cfg.lt_field,
+                            error_message=f"Validation failed for {cfg.lt_validation}"
+                        )
+                        db.session.add(error_log)
+                        error_flag = True
+                        error_count += 1
+                    else:
+                        # Store valid data
+                        ods_table = cfg.ods_table
+                        if ods_table not in stage_data:
+                            stage_data[ods_table] = {}
+                        stage_data[ods_table][cfg.ods_column] = cleaned_value
+
+                    current_seq += 1
+
+                current_stage += 1
+
+            # 2.2) WRITE TO PRODUCTION TABLE SECTION
+            if not error_flag:
+                for table_name, columns in stage_data.items():
+                    if table_name == 'stock':
+                        stock = Stock(**columns)  # Assuming Stock model exists
+                        db.session.add(stock)
+                    elif table_name == 'stock_price':
+                        stock_price = StockPrice(**columns)  # Assuming StockPrice model exists
+                        db.session.add(stock_price)
+                processed_count += 1
+
+        db.session.commit()
+        return f"{csv_type} CSV processing completed. {processed_count} records processed successfully, {error_count} errors logged."
+
+    except SQLAlchemyError as e:
+        db.session.rollback()
+        return f"Database Error: {str(e)}"
+    except Exception as e:
+        db.session.rollback()
+        return f"Error: {str(e)}"
+
+# Temporary placeholder models (move to models/ later)
+class Stock(db.Model):
+    __tablename__ = 'stock'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    ticker = db.Column(db.String(15), nullable=False)
+    company_name = db.Column(db.String(50), nullable=True)
+    sector = db.Column(db.String(20), nullable=True)
+    industry = db.Column(db.String(20), nullable=True)
+
+class StockPrice(db.Model):
+    __tablename__ = 'stock_price'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    quoted_price = db.Column(db.Float, nullable=False)
+
+Notes:
+Validation Routines: Added basic implementations for textupper, textonly, etc. Customize these based on your exact validation needs.
+
+Cleaning: mrclean enforces your rules (digits, letters, .$,, single spaces, no leading/trailing spaces).
+
+Error Logging: Introduced an ErrorLog model (temporary here; move to models/).
+
+Production Tables: Assumed Stock and StockPrice models. Define these in models/ if not already present.
+
+Dynamic Processing: Loops through stages and sequences as per the workflow.
+
+Step 2: Enhance process_csv_routes.py
+The route needs minimal changes since it already dynamically imports the processor. We’ll just ensure it passes the csv_type correctly and handles the response.
+python
+
+# File Name: mrclean\routes\process_csv_routes.py
+# Version: 1.2
+# Last Updated: 27-Feb-2025
+# Description: Route for processing CSV data.
+
+from flask import Blueprint, render_template, request
+from sqlalchemy.exc import SQLAlchemyError
+from app import db
+import importlib
+
+process_csv_bp = Blueprint('process_csv', __name__)
+
+@process_csv_bp.route('/process_csv', methods=['GET', 'POST'])
+def process_csv():
+    message = ""
+    if request.method == 'POST':
+        csv_type = request.form.get('csv_type')
+        if csv_type:
+            try:
+                # Dynamically import the processor
+                processor_module = importlib.import_module(f'csv_processors.{csv_type.lower()}_processor')
+                process_function = getattr(processor_module, f'process_{csv_type.lower()}')
+                message = process_function(csv_type)
+            except (SQLAlchemyError, ImportError, AttributeError) as e:
+                message = f"Error: {str(e)}"
+        else:
+            message = "Invalid CSV Type selected"
+    return render_template('process_csv.html', message=message)
+
+Notes:
+The route remains simple, delegating all logic to the processor.
+
+The message will reflect the detailed outcome (e.g., "mrclean CSV processing completed. 5 records processed successfully, 2 errors logged.").
+
+Step 3: Add Supporting Models
+Move the ErrorLog, Stock, and StockPrice models to models/:
+models/error_log.py
+python
+
+# File Name: mrclean\models\error_log.py
+# Version: 1.0
+# Last Updated: 27-Feb-2025
+# Description: Model for logging errors during CSV processing.
+
+from app import db
+from sqlalchemy import func
+
+class ErrorLog(db.Model):
+    __tablename__ = 'error_log'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    stock_lt_rec_id = db.Column(db.Integer, db.ForeignKey('stock_lt.rec_id'), nullable=False)
+    field_name = db.Column(db.String(15), nullable=False)
+    error_message = db.Column(db.Text, nullable=False)
+    timestamp = db.Column(db.DateTime, default=func.now(), nullable=False)
+
+models/stock.py
+python
+
+# File Name: mrclean\models\stock.py
+# Version: 1.0
+# Last Updated: 27-Feb-2025
+# Description: Model for the stock production table.
+
+from app import db
+
+class Stock(db.Model):
+    __tablename__ = 'stock'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    ticker = db.Column(db.String(15), nullable=False)
+    company_name = db.Column(db.String(50), nullable=True)
+    sector = db.Column(db.String(20), nullable=True)
+    industry = db.Column(db.String(20), nullable=True)
+
+models/stock_price.py
+python
+
+# File Name: mrclean\models\stock_price.py
+# Version: 1.0
+# Last Updated: 27-Feb-2025
+# Description: Model for the stock_price production table.
+
+from app import db
+
+class StockPrice(db.Model):
+    __tablename__ = 'stock_price'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    quoted_price = db.Column(db.Float, nullable=False)
+
+Update models/__init__.py:
+python
+
+from .user_model import User
+from .profile_model import Profile
+from .stock_lt import StockLT
+from .csvconfig import CSVConfig
+from .csv_uploads import CSVUploads
+from .error_log import ErrorLog
+from .stock import Stock
+from .stock_price import StockPrice
+
+Step 4: Adjust Template (Optional)
+The current process_csv.html works well with the message output. If you want more detail (e.g., a table of processed records or errors), we can expand it later based on your feedback.
+Validation and Testing
+Database Setup:
+Run db.create_all() in app/__init__.py to create the new error_log, stock, and stock_price tables.
+
+Test Data:
+Ensure stock_lt and csvuploads have test records (e.g., LOAD_ID = 1001, CSV_TYPE = 'mrclean').
+
+Verify csvconfig matches your example data.
+
+Run:
+Select "mrclean" on /process_csv, click "Execute," and check the message.
+
+Meeting Your Requirements
+Workflow: Fully implemented (Initialize, Stage Processing, Write to Production).
+
+Cleaning: mrclean enforces your rules.
+
+Validation: Custom routines for each lt_validation.
+
+Error Handling: Logs to error_log.
+
+Staging: Processes data into stock (Stage 1) and stock_price (Stage 2).
+
+Let me know if you need further refinements or help testing this!
+

@@ -1,4 +1,4 @@
-## **File Name: logintemplate\docs\4-EnvironmentValidation.md
+## **File Name: mrclean\docs\4-EnvironmentValidation.md
 ## **Version: 2.5
 ## **Last Updated: 16-Feb-2024
 ## **Description: The document describes how to go about validating the framework once it has been set up and configured
@@ -48,7 +48,7 @@
  - [ ]  Start the MySQL server and log in using your credentials:
      - Run: `mysql -u [DB_USER] -p`.
  - [ ]  Create the database for the application:
-     - Run: `CREATE DATABASE logintemplate;`.
+     - Run: `CREATE DATABASE mrclean;`.
  - [ ]  Load the `database.sql` schema into the database:
      - Use **MySQL Workbench** to execute the SQL script.
  - [ ]  Verify that all tables and schema objects are created:
@@ -123,7 +123,7 @@ SECRET_KEY=your_secret_key
 DB_USER=your_db_user 
 DB_PASSWORD=your_db_password 
 DB_HOST=localhost 
-DB_NAME=logintemplate 
+DB_NAME=ods
 DEBUG_MODE=True
 
 #### **8. Git Version Control**
@@ -135,7 +135,7 @@ These steps ensure that version control is set up correctly.
 - [ ] Check the developer's commit access to the repository:
     - Run: `git commit --allow-empty -m "Validation test"`.
 - [ ] Clone the project repository:
-    - Run: `git clone https://github.com/jttinn/logintemplate.git`.
+    - Run: `git clone https://github.com/jttinn/mrclean.git`.
 - [ ] Confirm the repository is up to date:
     - Run: `git pull origin main`.
 

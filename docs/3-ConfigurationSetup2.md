@@ -1,4 +1,4 @@
-## File Name: logintemplate\docs\3-ConfigurationSetup1.md
+## File Name: mrclean\docs\3-ConfigurationSetup1.md
 ## Version: 2.6
 ## Last Updated: 19-Feb-2025
 ## Description: PART 2: The document describes how the framework described in 2-ApplicationArchitecture will be Configured and set up.
@@ -24,7 +24,7 @@ SECRET_KEY=your_secret_key
 DB_USER=your_db_user
 DB_PASSWORD=your_db_password
 DB_HOST=localhost
-DB_NAME=logintemplate
+DB_NAME=ods
 DEBUG_MODE=True
 ```
 
@@ -43,7 +43,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "default_secret_key")  # Fallback to a defa
 DB_USER = os.getenv("DB_USER", "root")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "")
 DB_HOST = os.getenv("DB_HOST", "localhost")
-DB_NAME = os.getenv("DB_NAME", "logintemplate")
+DB_NAME = os.getenv("DB_NAME", "ods")
 DEBUG_MODE = os.getenv("DEBUG_MODE", "False").lower() == "true"
 
 ```
@@ -189,32 +189,32 @@ The python-dotenv library will load values from a .env file into your applicatio
 
 ## 2.9 Workspace Configuration**
 
-To ensure that Visual Studio Code recognizes the `logintemplate` package and uses the correct Python interpreter and environment variables, the following workspace-specific settings need to be configured:
+To ensure that Visual Studio Code recognizes the `mrclean` package and uses the correct Python interpreter and environment variables, the following workspace-specific settings need to be configured:
 
 ## 2.9.1 **Create or Update `.vscode/settings.json`:**
 
    Add the following content to the `.vscode/settings.json` file to set the Python interpreter path and the `PYTHONPATH` environment variable:
 
    ```jsonc
-   // File Name: logintemplate\.vscode\settings.json
+   // File Name: mrclean\.vscode\settings.json
    // Version: 1.0
    // Last Updated: 17-Feb-2025
-   // Description: Workspace-specific settings for the logintemplate project.
+   // Description: Workspace-specific settings for the mrclean project.
 
    {
-       "python.pythonPath": "C:\\PythonScripts\\logintemplate\\venv\\Scripts\\python.exe",
+       "python.pythonPath": "C:\\PythonScripts\\mrclean\\venv\\Scripts\\python.exe",
        "terminal.integrated.env.windows": {
-           "PYTHONPATH": "C:\\PythonScripts\\logintemplate"
+           "PYTHONPATH": "C:\\PythonScripts\\mrclean"
        }
    }
 
 ## 2.9.2 Create or Update launch.json:
 
 Add the following content to the launch.json file to configure the launch settings for the Flask application:
-// File Name: logintemplate\.vscode\launch.json
+// File Name: mrclean\.vscode\launch.json
 // Version: 1.0
 // Last Updated: 17-Feb-2025
-// Description: Launch configuration for the logintemplate project.
+// Description: Launch configuration for the mrclean project.
 
 {
     "version": "0.2.0",
@@ -239,14 +239,14 @@ Add the following content to the launch.json file to configure the launch settin
     ]
 }
 
-## 2.9.3 Update logintemplate.code-workspace:
+## 2.9.3 Update mrclean.code-workspace:
 
-Ensure that the logintemplate.code-workspace file references the workspace settings and configurations correctly:
+Ensure that the mrclean.code-workspace file references the workspace settings and configurations correctly:
 
-// File Name: logintemplate\.vscode\logintemplate.code-workspace
+// File Name: mrclean\.vscode\mrclean.code-workspace
 // Version: 1.0
 // Last Updated: 17-Feb-2025
-// Description: Workspace-specific settings for the logintemplate project.
+// Description: Workspace-specific settings for the mrclean project.
 
 {
     "folders": [
@@ -255,9 +255,9 @@ Ensure that the logintemplate.code-workspace file references the workspace setti
         }
     ],
     "settings": {
-        "python.pythonPath": "C:\\PythonScripts\\logintemplate\\venv\\Scripts\\python.exe",
+        "python.pythonPath": "C:\\PythonScripts\\mrclean\\venv\\Scripts\\python.exe",
         "terminal.integrated.env.windows": {
-            "PYTHONPATH": "C:\\PythonScripts\\logintemplate"
+            "PYTHONPATH": "C:\\PythonScripts\\mrclean"
         }
     },
     "launch": {
@@ -284,7 +284,7 @@ Ensure that the logintemplate.code-workspace file references the workspace setti
 }
 
 #### 2.10 GitHub Config: 
-To create a save point for all code under the `logintemplate` workspace, you can use Git to commit the current state of your project. Here are the steps to do so:
+To create a save point for all code under the `mrclean` workspace, you can use Git to commit the current state of your project. Here are the steps to do so:
 
 2.10.1 **Initialize a Git Repository (if not already initialized):**
    Open a terminal in the root directory of your project and run:
@@ -312,7 +312,7 @@ To create a save point for all code under the `logintemplate` workspace, you can
 
 ### Example Commands
 ```sh
-cd /c:/PythonScripts/logintemplate
+cd /c:/PythonScripts/mrclean
 git init
 git add .
 git commit -m "Save point: Template for other projects"

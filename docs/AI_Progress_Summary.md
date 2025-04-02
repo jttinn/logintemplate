@@ -6,7 +6,7 @@ This is the CURRENT STATE Development Environment:
 GitHub Copilot
 Summary of Development Progress
 Project Overview
-The logintemplate project aims to create a reusable framework for developing other applications. The framework includes user registration, login, and profile management features. The project is designed for easy replication and deployment across environments.
+The mrclean project aims to create a reusable framework for developing other applications. The framework includes user registration, login, and profile management features. The project is designed for easy replication and deployment across environments.
 
 Key Accomplishments
 Project Setup:

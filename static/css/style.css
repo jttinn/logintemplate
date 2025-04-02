@@ -1,75 +1,124 @@
-/* File Name: logintemplate\static\css\style.css */
-/* Version: 1.8 */
-/* Last Updated: 16-Feb-2025 */
-/* Description: CSS file for styling the web pages. */
+/* File Name: static/css/style.css */
+/* Version: 1.9 */
+/* Last Updated: 18-Mar-2025 */
+/* Description: Base styles for MrClean web framework with updated panel toggle styling and positioning. */
 
-.banner {
-    background-color: #88bbbe;
-    padding: 1rem;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 11px;
+    line-height: 1.5;
+    background-color: #f8f9fa;
 }
 
-.sidepanel  {
-    width: 250px;
+.top-banner {
     position: fixed;
- /*   z-index: 1; */
-    height: 100%;
     top: 0;
     left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: width 0.5s;
-    padding-top: 60px;
-}
-  
-.sidepanel a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-  
-.sidepanel a:hover {
-    color: #f1f1f1;
-}
-  
-.sidepanel .closebtn {
-    position: absolute;
-    top: 0;
     right: 0;
-    font-size: 36px;
-    margin-left: 50px;
+    height: 102px;
+    border-bottom: 1px solid #dee2e6;
+    z-index: 1000;
 }
 
-.sidepanel-collapsed {
+.banner-main {
+    background-color: #6B8687;
+    color: #FFFFFF;
+}
+
+.banner-main a {
+    color: #FFFFFF;
+}
+
+.banner-main a:hover {
+    color: #E0E0E0;
+    text-decoration: underline;
+}
+
+.top-banner h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.breadcrumb-bar {
+    background-color: #D1D1D1;
+    font-size: 11px;
+}
+
+.breadcrumbs {
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.breadcrumbs a {
+    color: #6B8687;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    color: #4A5F60;
+    text-decoration: underline;
+}
+
+.left-panel {
+    position: fixed;
+    top: 102px;
+    left: 0;
+    width: 250px;
+    height: calc(100vh - 102px);
+    background-color: #343a40;
+    color: white;
+    transition: width 0.3s ease;
+    z-index: 900;
+}
+
+.left-panel.collapsed {
     width: 35px;
 }
-  
-.openbtn {
-    font-size: 20px;
+
+.toggle-btn {
+    padding: 10px;
+    text-align: right; /* Right when expanded */
     cursor: pointer;
-    background-color: #111;
+}
+
+.left-panel.collapsed .toggle-btn {
+    text-align: left; /* Left when collapsed */
+}
+
+.toggle-btn {
+    font-size: 24px; /* Fatter arrows */
+    font-weight: bold; /* Thicker appearance */
     color: white;
-    padding: 10px 15px;
-    border: none;
-}
-  
-.openbtn:hover {
-    background-color:#444;
 }
 
-.body {
-    background-color: #f3f4f7;
-    color: #4a536e;
+.nav-link {
+    color: white;
+    padding: 8px 15px;
+    font-size: 14px;
 }
 
-.body-content {
+.nav-link:hover {
+    background-color: #495057;
+    color: white;
+    text-decoration: none;
+}
+
+.left-panel.collapsed #menuItems {
+    display: none;
+}
+
+.page-body {
     margin-left: 250px;
-    transition: margin-left 0.3s;
+    padding: 20px;
+    min-height: calc(100vh - 102px);
+    transition: margin-left 0.3s ease;
+    background-color: #ffffff;
 }
 
-.body-content-collapsed {
-    margin-left: 20px;
+.page-body.collapsed {
+    margin-left: 35px;
 }
